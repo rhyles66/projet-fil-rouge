@@ -1,0 +1,188 @@
+/*-----Variable couleur-----*/
+
+:root {
+    --bg: #041821;
+    --accent: #13d89b;
+    --texte: #ffffff;
+    --gris: #6c7f87;
+} 
+
+/*-----Reset : marges nulles + padding dans la page */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*----- Base de la page -----*/
+body {
+    font-family: "Montserrat", sans-serif;
+    background: var(--bg);
+    color: var(--texte)
+} 
+
+h1, .logo {
+    font-family: "DM Serif Display", serif; /* police serif commune */
+    font-weight: 400;
+}
+
+ul {list-style: none;} /*retire les puces*/
+a {text-decoration: none; color: inherit;}
+
+/* -----HEADER-----*/
+
+.header {
+    display: flex;
+    flex-direction: column; /*empile sur mobile*/
+    align-items: center;
+    gap: 14px; /*espace entre logo et icones */
+    padding: 24px 16px;
+    border-bottom: 1px solid var(--gris);
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.icons {
+    display: flex;
+    gap: 18px;
+}
+
+/* Retire le style par defauts du bouton theme*/
+.icons button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/*-----Conteneur et intro-----*/
+.intro, .filters, .gallery {
+    max-width: 1150px;
+    margin-inline: auto;
+    padding-inline: 16px;
+}
+
+.intro {
+    padding-top: 32px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    line-height: 1.15;
+    max-width: 600px; /* retour a la ligne avant "creative et engagee"*/
+}
+
+.accent {
+    color: var(--accent);
+}
+
+.intro p {
+    margin-top: 24px;
+    color: var(--gris);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+/*----- filtres-----*/
+.filters {
+    margin-top: 32px;
+}
+
+.filters ul {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.filters a {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 3px 6px; /* fond vert du filtres actif */
+}
+
+.filters .active {
+    background: var(--accent);
+}
+
+/* -----Photos : mobile 3 colonnes 9 images -----*/
+.gallery {
+    margin-top: 24px;
+}
+
+.gallery ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.gallery img {
+    display: block; /* supprime le vide sous l'image*/
+    width: 100%;
+    aspect-ratio: 1/1; /* carre */
+    object-fit: cover; /* recadre sans deformer */
+}
+
+.gallery li:nth-child(n+10) {
+    display: none; 
+}
+
+/* ----- pied de page ----- */
+.footer {
+    margin-top: 64px;
+    padding-bottom: 40px;
+    text-align: center;
+    color: var(--gris);
+    font-size: 0.85rem;
+    line-height: 1.8;
+}
+
+/* -----Tablette 5 colonnes d'images -----*/
+@media (min-width: 768px){
+    .header {
+        flex-direction: row; /* logo a gauche et icones a droite */
+        justify-content: space-between;
+        padding: 20px 16px;
+    }
+    .logo {
+        font-size: 1.1rem;
+    }
+    .intro, .filters, .gallery {
+        padding-inline: 72px; /* contenu plus etroit que le header*/
+    }
+    .intro p {
+        font-size: 0.9rem;
+    }
+    .gallery ul {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .gallery li:nth-child(n+10) {
+        display: list-item; /* reaffiche les images masquees */
+    }
+
+}
+
+/* 4 colonnes d'images pour les ordinateurs */
+@media (min-width: 1024px) {
+    .gallery ul {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
